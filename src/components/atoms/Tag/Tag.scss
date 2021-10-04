@@ -16,6 +16,15 @@
 
 .rf-tag--default {
   background-color: var(--background-secondary);
+  color: var(--text-primary);
+
+  & .rf-tag__icon, & .rf-tag__remove {
+    color: var(--text-secondary);
+  }
+}
+
+.rf-tag--grey {
+  background-color: var(--background-secondary);
   color: var(--text-secondary);
 }
 
@@ -64,8 +73,23 @@
   color: var(--special-violet);
 }
 
+.rf-tag--outlined {
+  background-color: transparent;
+  border: 1px solid currentColor;
+}
+
+.rf-tag__icon {
+  margin-right: 6px;
+  margin-left: -4px;
+
+  svg {
+    display: block;
+  }
+}
+
 .rf-tag__remove {
   margin-left: 6px;
+  margin-right: -4px;
   color: inherit;
   cursor: pointer;
   width: 16px;
@@ -73,8 +97,8 @@
   flex-shrink: 0;
 
   svg {
+    display: block;
     width: 16px;
     height: 16px;
-    color: var(--text-secondary);
   }
 }

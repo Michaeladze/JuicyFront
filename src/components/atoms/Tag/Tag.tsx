@@ -4,14 +4,21 @@ import { Variant } from '../../../types';
 import { Close } from '../../../index';
 
 export interface ITagProps {
-  children: ReactNode | ReactNode[];
+  /** Цвет тега. */
+  variant?: 'grey' | Variant;
+  /** Использовать обводку вместо заливки фона. */
+  outlined?: boolean;
+  /** Иконка в начале тега. */
+  icon?: ReactNode;
+  /** Коллбек клика по теку. */
   onClick?: () => void;
+  /** Коллбек клика по кнопке удаления. */
   onRemove?: () => void;
+  /** Дизейбл клика по тегу и кнопке удаления. */
   disabled?: boolean;
-  variant?: Variant;
 }
 
-const Tag: React.FC<ITagProps> = ({ children, onClick, onRemove, disabled, variant = 'default' }: ITagProps) => {
+const Tag: React.FC<ITagProps> = ({ children, icon, onClick, onRemove, disabled, variant = 'default', outlined }) => {
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -26,16 +33,21 @@ const Tag: React.FC<ITagProps> = ({ children, onClick, onRemove, disabled, varia
 
   // -------------------------------------------------------------------------------------------------------------------
 
-  const clickableClass = onClick ? 'rf-tag--clickable' : '';
+  const clickableClass = onClick && !disabled ? 'rf-tag--clickable' : '';
 
   // -------------------------------------------------------------------------------------------------------------------
 
   return (
-    <div className={`rf-tag ${clickableClass} rf-tag--${variant}`} onClick={handleClick}>
+    <div className={`rf-tag ${clickableClass} rf-tag--${variant} ${outlined ? 'rf-tag--outlined' : ''}`} onClick={handleClick}>
+      {!!icon && (
+        <div className='rf-tag__icon'>
+          {icon}
+        </div>
+      )}
       {children}
-      {onRemove && <div className='rf-tag__remove' onClick={handleRemove}>
+      {!!onRemove && <button type='button' className='rf-tag__remove' onClick={handleRemove} disabled={disabled} aria-label='Удалить'>
         <Close/>
-      </div>}
+      </button>}
     </div>
   );
 };
