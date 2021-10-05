@@ -23,7 +23,7 @@
   }
 }
 
-.rf-button.rf--s {
+.rf-button.rf-button--s {
   height: 32px;
   min-width: 32px;
   @include button-s-14;
@@ -49,7 +49,7 @@
   }
 }
 
-.rf-button.rf--m {
+.rf-button.rf-button--m {
   height: 40px;
   min-width: 40px;
   @include button-m-16;
@@ -75,7 +75,7 @@
   }
 }
 
-.rf-button.rf--l {
+.rf-button.rf-button--l {
   height: 48px;
   min-width: 48px;
   @include button-m-16;
@@ -101,7 +101,7 @@
   }
 }
 
-.rf-button.rf--xl {
+.rf-button.rf-button--xl {
   height: 56px;
   min-width: 56px;
   @include button-m-16;
@@ -257,22 +257,22 @@
 .rf-button--iconFill,
 .rf-button--icon {
 
-  &.rf--s {
+  &.rf-button--s {
     padding: 0;
     width: 32px;
   }
 
-  &.rf--m {
+  &.rf-button--m {
     padding: 0;
     width: 40px;
   }
 
-  &.rf--l {
+  &.rf-button--l {
     padding: 0;
     width: 48px;
   }
 
-  &.rf--xl {
+  &.rf-button--xl {
     padding: 0;
     width: 56px;
   }
@@ -311,10 +311,10 @@
 
 .rf-button--text {
 
-  &.rf--s,
-  &.rf--m,
-  &.rf--l,
-  &.rf--xl {
+  &.rf-button--s,
+  &.rf-button--m,
+  &.rf-button--l,
+  &.rf-button--xl {
     width: auto;
     height: auto;
     padding: 0;

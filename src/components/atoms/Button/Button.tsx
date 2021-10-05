@@ -2,12 +2,14 @@ import React, {
   FC, HTMLProps, ReactNode
 } from 'react';
 import { Size, VariantClassic } from '../../../types';
-import { sizeClass } from '../../../utils/helpers';
+
 import './Button.scss';
 import Preloader from '../Preloader';
 
+import { classnames } from '../../../utils/classnames';
+
 export type ButtonType =
-  'primary'
+  | 'primary'
   | 'light'
   | 'secondary'
   | 'ghost'
@@ -57,38 +59,37 @@ const Button: FC<IButtonProps> = ({
   endAdornment,
   ...props
 }: IButtonProps) => {
-
-  const classesMap: Record<ButtonType, string> = {
-    primary: 'rf-button--primary',
-    light: 'rf-button--light',
-    secondary: 'rf-button--secondary',
-    ghost: 'rf-button--ghost',
-    danger: 'rf-button--danger',
-    icon: 'rf-button--icon',
-    iconFill: 'rf-button--iconFill',
-    text: 'rf-button--text',
-    white: 'rf-button--white',
-  };
-
-  const widthClass = fullWidth ? 'rf-button__full-width' : '';
-  const roundClass = round ? 'rf-button--round' : '';
-  const colorClass = buttonType === 'text' ? `rf-button--text-${textColor}` : '';
-
   return (
-
     <button
-      { ...props }
-      type={ type }
-      className={ `rf-button ${classesMap[buttonType]} ${sizeClass[size]} ${widthClass} ${props.className || ''} ${colorClass} ${roundClass}` }
+      {...props}
+      type={type}
+      className={classnames(
+        props.className,
+        'rf-button',
+        `rf-button--${buttonType}`,
+        `rf-button--${size}`,
+        buttonType === 'text' && `rf-button--text-${textColor}`,
+        fullWidth && 'rf-button__full-width',
+        round && 'rf-button--round'
+      )}
     >
-      <div data-testid='rf-button__content' className={`rf-button__content ${preloader ? 'rf-button__content--hidden' : ''}`}>
-        {!!startAdornment && <div className='rf-button__adornment rf-button__adornment--start'>{startAdornment}</div>}
-        {!!children && <div className='rf-button__text'>
-          {children}
-        </div>}
-        {!!endAdornment && <div className='rf-button__adornment rf-button__adornment--end'>{endAdornment}</div>}
+      <div
+        data-testid='rf-button__content'
+        className={classnames('rf-button__content', preloader && 'rf-button__content--hidden')}
+      >
+        {!!startAdornment && (
+          <div className='rf-button__adornment rf-button__adornment--start'>
+            {startAdornment}
+          </div>
+        )}
+        {!!children && <div className='rf-button__text'>{children}</div>}
+        {!!endAdornment && (
+          <div className='rf-button__adornment rf-button__adornment--end'>
+            {endAdornment}
+          </div>
+        )}
       </div>
-      {!!preloader && <Preloader size='s' variant='inherit'/>}
+      {!!preloader && <Preloader size='s' variant='inherit' />}
     </button>
   );
 };
