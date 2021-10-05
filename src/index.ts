@@ -50,6 +50,8 @@ import Toast from './components/atoms/Toast';
 import { InputHook } from './components/atoms/Input/InputHook';
 import Timepicker from './components/atoms/Timepicker';
 import Confirm from './components/popups/Confirm';
+import InputPhone from './components/atoms/InputPhone';
+import HistoryCardFilter from './components/molecules/HistoryCardFilter';
 
 export {
   HistoryCardFilter,
@@ -162,7 +164,6 @@ export {
 // --------------------------Переменные---------------------------------------------------------------------------------
 import variables from './styles/variables.json';
 import { download } from './utils/download';
-import HistoryCardFilter from './components/molecules/HistoryCardFilter';
-import InputPhone from './components/atoms/InputPhone';
+
 
 export { variables, download };
