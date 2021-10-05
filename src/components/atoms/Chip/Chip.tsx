@@ -11,9 +11,11 @@ export interface ITagProps {
   disabled?: boolean;
   size?: Size;
   type?: 'primary' | 'secondary' | 'outline';
+  icon?: ReactNode;
+  iconPosition?: 'right' | 'left';
 }
 
-const Chip: React.FC<ITagProps> = ({ children, onClick, onRemove, size = 'm', type = 'primary' }: ITagProps) => {
+const Chip: React.FC<ITagProps> = ({ children, onClick, onRemove, size = 'm', type = 'primary', icon, iconPosition, disabled }: ITagProps) => {
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -23,20 +25,25 @@ const Chip: React.FC<ITagProps> = ({ children, onClick, onRemove, size = 'm', ty
 
   const handleRemove = (e: React.MouseEvent) => {
     e.stopPropagation();
-    onRemove && onRemove();
+    onRemove && !disabled && onRemove();
   };
 
   // -------------------------------------------------------------------------------------------------------------------
 
-  const clickableClass = onClick ? 'rf-chip--clickable' : '';
+  const clickableClass = onClick && !disabled ? 'rf-chip--clickable' : '';
 
   // -------------------------------------------------------------------------------------------------------------------
-
   return (
-    <div className={`rf-chip rf-chip--${type} ${clickableClass} ${sizeClass[size]}`} onClick={handleClick}>
+    <div className={`rf-chip rf-chip--${disabled ? 'secondary' : type} ${sizeClass[size]} ${clickableClass}`} onClick={handleClick}>
+      {icon && iconPosition && iconPosition === 'left' && <div className='rf-chip__left-icon'>
+        {icon}
+      </div>}
       {children}
-      {onRemove && <div className='rf-chip__remove' onClick={handleRemove}>
+      {onRemove && <div className={`rf-chip__right-icon ${disabled ? 'rf-chip__not-clickable' : ''}`} onClick={handleRemove}>
         <Close/>
+      </div>}
+      {icon && iconPosition && iconPosition === 'right' && <div className='rf-chip__right-icon'>
+        {icon}
       </div>}
     </div>
   );

@@ -108,6 +108,7 @@ export {
 // --------------------------Иконки-------------------------------------------------------------------------------------
 
 import Close from './assets/icons/Close';
+import Download from './assets/icons/Download';
 import Refresh from './assets/icons/Refresh';
 import SearchIcon from './assets/icons/Search';
 import Success from './assets/icons/Success';
@@ -134,6 +135,7 @@ import Time from './assets/icons/Time';
 export {
   Refresh,
   Close,
+  Download,
   SearchIcon,
   Success,
   Reduce,
