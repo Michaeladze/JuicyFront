@@ -46,6 +46,8 @@ import Notification from './components/molecules/Notification';
 import Notifications, { sendNotification } from './components/molecules/Notifications';
 import Card from './components/molecules/Card';
 import Toast from './components/atoms/Toast';
+import History from './components/molecules/History';
+import Status from './components/atoms/Status';
 
 import { InputHook } from './components/atoms/Input/InputHook';
 import Timepicker from './components/atoms/Timepicker';
@@ -102,7 +104,9 @@ export {
   Column,
   UserPhoto,
   Card,
-  Toast
+  Toast,
+  History,
+  Status
 };
 
 // --------------------------Иконки-------------------------------------------------------------------------------------
@@ -131,6 +135,9 @@ import CircleConfirm from './assets/icons/CircleConfirm';
 import CircleReject from './assets/icons/CircleReject';
 import Circle from './assets/icons/Circle';
 import Time from './assets/icons/Time';
+import EmptyUser from './assets/icons/EmptyUser';
+import Cross from './assets/icons/Cross';
+import Redo from './assets/icons/Redo';
 
 export {
   Refresh,
@@ -156,7 +163,10 @@ export {
   CircleConfirm,
   CircleReject,
   Circle,
-  Time
+  Time,
+  EmptyUser,
+  Cross,
+  Redo
 };
 
 // --------------------------Переменные---------------------------------------------------------------------------------
