@@ -108,21 +108,21 @@ const History: React.FC<IProps> = ({ history, isUZADO, attachments }: IProps) =>
               </p>
             )}
 
-            {d && (
+            {!!d && (
               <span className='rf-history__details-date'>
                 {d.dayOfMonth} {d.monthShort} {d.year} в {d.hour}:{d.minutes}
               </span>
             )}
-            {r.date && (
+            {!!r.date && (
               <div className='rf-history__status-wrapper'>
                 <Status statusText={r.statusText} criticality={r.criticality}/>
               </div>
             )}
           </div>
 
-          <div className='rf-history__details-wrapper'>
-            {r.comment && <div className='rf-history__details-comment'>{r.comment}</div>}
-          </div>
+          {!!r.comment && <div className='rf-history__details-wrapper'>
+            <div className='rf-history__details-comment'>{r.comment}</div>
+          </div>}
         </div>
       </div>
     );
